@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b0a836f0-c951-4fab-bb22-7e9e7dfdbca7" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ua/juja/sqlcmd/Chat.java" afterPath="$PROJECT_DIR$/src/ua/juja/sqlcmd/Chat.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ua/juja/sqlcmd/dababase/Dao.java" afterPath="$PROJECT_DIR$/src/ua/juja/sqlcmd/dababase/Dao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ua/juja/sqlcmd/SqlCmd.java" afterPath="$PROJECT_DIR$/src/ua/juja/sqlcmd/SqlCmd.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ua/juja/sqlcmd/dababase/DbManager.java" afterPath="$PROJECT_DIR$/src/ua/juja/sqlcmd/dababase/DbManager.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -23,8 +23,8 @@
       <file leaf-file-name="SqlCmd.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ua/juja/sqlcmd/SqlCmd.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
-              <caret line="14" column="47" lean-forward="true" selection-start-line="14" selection-start-column="47" selection-end-line="14" selection-end-column="47" />
+            <state relative-caret-position="280">
+              <caret line="20" column="1" lean-forward="true" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -35,8 +35,8 @@
       <file leaf-file-name="Chat.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ua/juja/sqlcmd/Chat.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="34" column="46" lean-forward="true" selection-start-line="34" selection-start-column="46" selection-end-line="34" selection-end-column="46" />
+            <state relative-caret-position="280">
+              <caret line="50" column="0" lean-forward="false" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -45,8 +45,8 @@
       <file leaf-file-name="TestClass.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/ua/juja/sqlcmd/TestClass.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="205">
-              <caret line="15" column="5" lean-forward="true" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+            <state relative-caret-position="303">
+              <caret line="22" column="66" lean-forward="true" selection-start-line="22" selection-start-column="66" selection-end-line="22" selection-end-column="66" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -57,14 +57,14 @@
       <file leaf-file-name="DbManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ua/juja/sqlcmd/dababase/DbManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="35" column="4" lean-forward="false" selection-start-line="35" selection-start-column="4" selection-end-line="35" selection-end-column="4" />
+            <state relative-caret-position="224">
+              <caret line="39" column="61" lean-forward="false" selection-start-line="39" selection-start-column="61" selection-end-line="39" selection-end-column="61" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <marker date="1514293451916" expanded="true" signature="1417:1613" ph="SELECT table... tables" />
-                <marker date="1514293451916" expanded="true" signature="2178:2190" ph="delete from " />
-                <marker date="1514293451916" expanded="true" signature="2784:2795" ph="drop table m... " />
-                <marker date="1514293451916" expanded="true" signature="4883:4897" ph="select * fro... missingValue" />
+                <marker date="1514296483490" expanded="true" signature="1439:1635" ph="SELECT table... tables" />
+                <marker date="1514296483490" expanded="true" signature="2200:2212" ph="delete from " />
+                <marker date="1514296483490" expanded="true" signature="2806:2817" ph="drop table m... " />
+                <marker date="1514296483490" expanded="true" signature="4905:4919" ph="select * fro... missingValue" />
               </folding>
             </state>
           </provider>
@@ -102,12 +102,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/ua/juja/sqlcmd/SqlCmd.java" />
         <option value="$PROJECT_DIR$/src/ua/juja/sqlcmd/TextMessages.java" />
         <option value="$PROJECT_DIR$/src/ua/juja/sqlcmd/dababase/Table.java" />
         <option value="$PROJECT_DIR$/test/ua/juja/sqlcmd/TestClass.java" />
         <option value="$PROJECT_DIR$/libraries/postgresql-42.1.4.jre7.jar!/org/postgresql/Driver.class" />
         <option value="$PROJECT_DIR$/src/ua/juja/sqlcmd/dababase/Dao.java" />
+        <option value="$PROJECT_DIR$/src/ua/juja/sqlcmd/SqlCmd.java" />
         <option value="$PROJECT_DIR$/src/ua/juja/sqlcmd/dababase/DbManager.java" />
         <option value="$PROJECT_DIR$/src/ua/juja/sqlcmd/Chat.java" />
       </list>
@@ -119,7 +119,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1378" />
@@ -691,7 +691,7 @@
       <option name="presentableId" value="Default" />
       <updated>1513973855687</updated>
       <workItem from="1513973865587" duration="27175000" />
-      <workItem from="1514200276956" duration="21308000" />
+      <workItem from="1514200276956" duration="25747000" />
     </task>
     <servers />
   </component>
@@ -728,11 +728,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="48483000" />
+    <option name="totallyTimeSpent" value="52922000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1378" height="744" extended-state="0" />
-    <editor active="true" />
+    <frame x="-4" y="-4" width="1374" height="732" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -742,12 +741,12 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3296" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3964111" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37683523" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20933735" sideWeight="0.5" order="6" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14652568" sideWeight="0.5" order="6" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -901,10 +900,10 @@
           <caret line="189" column="17" lean-forward="true" selection-start-line="189" selection-start-column="17" selection-end-line="189" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1514293451916" expanded="true" signature="1417:1613" ph="SELECT table... tables" />
-            <marker date="1514293451916" expanded="true" signature="2178:2190" ph="delete from " />
-            <marker date="1514293451916" expanded="true" signature="2784:2795" ph="drop table m... " />
-            <marker date="1514293451916" expanded="true" signature="4883:4897" ph="select * fro... missingValue" />
+            <marker date="1514296483490" expanded="true" signature="1439:1635" ph="SELECT table... tables" />
+            <marker date="1514296483490" expanded="true" signature="2200:2212" ph="delete from " />
+            <marker date="1514296483490" expanded="true" signature="2806:2817" ph="drop table m... " />
+            <marker date="1514296483490" expanded="true" signature="4905:4919" ph="select * fro... missingValue" />
           </folding>
         </state>
       </provider>
@@ -1051,16 +1050,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/ua/juja/sqlcmd/TestClass.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="15" column="5" lean-forward="true" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ua/juja/sqlcmd/dababase/Dao.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="42">
@@ -1071,8 +1060,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ua/juja/sqlcmd/SqlCmd.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="14" column="47" lean-forward="true" selection-start-line="14" selection-start-column="47" selection-end-line="14" selection-end-column="47" />
+        <state relative-caret-position="280">
+          <caret line="20" column="1" lean-forward="true" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/ua/juja/sqlcmd/TestClass.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="303">
+          <caret line="22" column="66" lean-forward="true" selection-start-line="22" selection-start-column="66" selection-end-line="22" selection-end-column="66" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1081,22 +1080,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ua/juja/sqlcmd/dababase/DbManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="35" column="4" lean-forward="false" selection-start-line="35" selection-start-column="4" selection-end-line="35" selection-end-column="4" />
+        <state relative-caret-position="224">
+          <caret line="39" column="61" lean-forward="false" selection-start-line="39" selection-start-column="61" selection-end-line="39" selection-end-column="61" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1514293451916" expanded="true" signature="1417:1613" ph="SELECT table... tables" />
-            <marker date="1514293451916" expanded="true" signature="2178:2190" ph="delete from " />
-            <marker date="1514293451916" expanded="true" signature="2784:2795" ph="drop table m... " />
-            <marker date="1514293451916" expanded="true" signature="4883:4897" ph="select * fro... missingValue" />
+            <marker date="1514296483490" expanded="true" signature="1439:1635" ph="SELECT table... tables" />
+            <marker date="1514296483490" expanded="true" signature="2200:2212" ph="delete from " />
+            <marker date="1514296483490" expanded="true" signature="2806:2817" ph="drop table m... " />
+            <marker date="1514296483490" expanded="true" signature="4905:4919" ph="select * fro... missingValue" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ua/juja/sqlcmd/Chat.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="34" column="46" lean-forward="true" selection-start-line="34" selection-start-column="46" selection-end-line="34" selection-end-column="46" />
+        <state relative-caret-position="280">
+          <caret line="50" column="0" lean-forward="false" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
           <folding />
         </state>
       </provider>

@@ -6,15 +6,13 @@ import java.util.Scanner;
 public class SqlCmd {
     public static void main(String[] args) {
         DbManager dbManager = new DbManager();
-
         Chat chat = new Chat(dbManager);
-
         Scanner scanner = new Scanner(System.in);
         String sentence = "";
 
         System.out.println(chat.getHelloMsg());
 
-        while (!sentence.equals("exit")){
+        while (!sentence.equals("exit")) {
             sentence = scanner.nextLine();
             System.out.println(chat.parse(sentence));
         }

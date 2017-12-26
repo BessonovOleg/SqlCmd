@@ -34,10 +34,10 @@ public class DbManager implements Dao{
         }
 
            try {
-                connection = DriverManager.getConnection("jdbc:postgresql://127.0.0.1:5432/" + dbName, userName, password);
+                connection = DriverManager.getConnection("jdbc:postgresql://127.0.0.1:5432/" + dbName+"?loggerLevel=OFF", userName, password);
             } catch (Exception ex) {
                 connection = null;
-                throw new RuntimeException("Ошибка подключения");
+                throw new RuntimeException("Ошибка подключения",ex);
             }
 
     }

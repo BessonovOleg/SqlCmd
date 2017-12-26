@@ -48,7 +48,7 @@ public class Chat {
                     dao.connect(params);
                     return "подключение успешно установлено";
                 }catch (Exception e){
-                    return "error";
+                    return "Ошибка подключения по причине: " + e.getMessage() + " " + e.getCause().getMessage();
                 }
             }
 
