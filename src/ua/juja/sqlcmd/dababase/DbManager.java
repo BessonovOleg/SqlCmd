@@ -2,6 +2,7 @@ package ua.juja.sqlcmd.dababase;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 
 public class DbManager implements Dao{
@@ -13,6 +14,7 @@ public class DbManager implements Dao{
         String result = "";
 
         String dbName = "";
+
         String userName = "";
         String password = "";
 
@@ -165,9 +167,11 @@ public class DbManager implements Dao{
         }
 
         StringBuilder result = new StringBuilder();
+        StringBuilder separate = new StringBuilder();
         int countColumns;
-        int[] sizeColumn;
-        String[] columnHeaders;
+        int[] sizeColumn = null;
+        String[] columnHeaders = null;
+        ArrayList<String> rows = new ArrayList<>();
 
 
         try {
@@ -179,39 +183,29 @@ public class DbManager implements Dao{
             sizeColumn = new int[countColumns];
             columnHeaders = new String[countColumns];
 
+
             for (int i = 1; i <= countColumns; i++) {
                 columnHeaders[i-1] = md.getColumnName(i);
-                sizeColumn[i-1] = md.getColumnName(i).length();
+                sizeColumn[i-1] = md.getColumnName(i).length() + 2;
             }
 
-           ArrayList<String> rows = new ArrayList<>();
-           String tmpRow = "";
-/*
+            String tmpRow = "";
+
             while (rs.next()) {
+                tmpRow = "";
                 for (int i = 1; i <= countColumns; i++) {
-                    if(i > 0){
+                    if(i > 1){
                         tmpRow = tmpRow + "|" + rs.getString(i);
                     }else {
                         tmpRow = tmpRow + rs.getString(i);
                     }
 
-                    if(rs.getString(i).length() > sizeColumn[i-1] ){
-                        sizeColumn[i-1] = rs.getString(i).length();
+                    if((rs.getString(i).length()+2) > sizeColumn[i-1] ){
+                        sizeColumn[i-1] = rs.getString(i).length()+2;
                     }
                 }
                 rows.add(tmpRow);
             }
-*/
-
-                while (rs.next()) {
-                    for (int i = 1; i <= countColumns; i++) {
-                        if (i > 1) System.out.print("+\t");
-                        String columnValue = rs.getString(i);
-                        System.out.print(columnValue + " " + md.getColumnName(i));
-                    }
-                    System.out.println("");
-                }
-
 
             rs.close();
             stmt.close();
@@ -221,9 +215,61 @@ public class DbManager implements Dao{
         }
 
 
+        //формироуем заголовочнуя строку
+        separate.append("+");
+        for (int i = 0; i < sizeColumn.length; i++) {
+            for (int j = 0; j < sizeColumn[i]; j++) {
+                separate.append("-");
+            }
+            separate.append("+");
+        }
+        separate.append("\n");
+
+        result.append(separate.toString());
+
+        int index = 0;
+        for(String header:columnHeaders){
+            result.append("+ ");
+
+            result.append(header);
+
+
+            if((header.length()) < sizeColumn[index]){
+                for(int j = 0; j < (sizeColumn[index] - header.length()-1);j++){
+                    result.append(" ");
+                }
+            }
+            index++;
+        }
+
+        result.append("+");
+        result.append("\n");
+        result.append(separate.toString());
+
+        for(String data:rows){
+            String[] cols = data.split("[|]");
+
+            for(int colIndex = 0;colIndex < cols.length;colIndex++){
+
+                result.append("+ ");
+                result.append(cols[colIndex]);
+
+                if(cols[colIndex].length() < sizeColumn[colIndex]){
+                    for(int j = 0; j < (sizeColumn[colIndex] - cols[colIndex].length()-1);j++){
+                        result.append(" ");
+                    }
+                }
+            }
+
+            result.append("+\n");
+        }
+        result.append(separate.toString());
 
         return result.toString();
     }
+
+
+
 
     @Override
     public String insert(String command) {
