@@ -44,7 +44,12 @@ public class Chat {
             }
 
             if (command.equals("connect")) {
-                return dao.connect(params);
+                try {
+                    dao.connect(params);
+                    return "подключение успешно установлено";
+                }catch (Exception e){
+                    return "error";
+                }
             }
 
             if(arrayCommand.length>1){
@@ -61,7 +66,11 @@ public class Chat {
                 }
 
                 if(command.equals("find")){
-                    return dao.find(params);
+                    try {
+                        return dao.find(params);
+                    }catch (Exception e){
+                        return e.getMessage();
+                    }
                 }
             }
 

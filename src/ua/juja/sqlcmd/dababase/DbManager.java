@@ -10,7 +10,7 @@ public class DbManager implements Dao{
     Connection connection = null;
 
     @Override
-    public String connect(String command) {
+    public void connect(String command) {
         String result = "";
 
         String dbName = "";
@@ -21,8 +21,7 @@ public class DbManager implements Dao{
         try {
             Class.forName("org.postgresql.Driver");
         } catch (ClassNotFoundException e) {
-            result = e.getMessage();
-            return result;
+            throw new RuntimeException(e.getMessage());
         }
 
         try {
@@ -31,17 +30,16 @@ public class DbManager implements Dao{
             userName = arrayCommand[1];
             password = arrayCommand[2];
         }catch (Exception ex){
-            return "Ошибка формата команды";
+            throw new RuntimeException("Ошибка формата команды");
         }
 
-        try {
-            connection = DriverManager.getConnection("jdbc:postgresql://127.0.0.1:5432/" + dbName, userName, password);
-            result = "подключение успешно установлено!";
-        } catch (SQLException ex) {
-            result = "ошибка подключеня\n" + ex.getMessage() ;
-        }
+           try {
+                connection = DriverManager.getConnection("jdbc:postgresql://127.0.0.1:5432/" + dbName, userName, password);
+            } catch (Exception ex) {
+                connection = null;
+                throw new RuntimeException("Ошибка подключения");
+            }
 
-        return result;
     }
 
     @Override

@@ -1,7 +1,7 @@
 package ua.juja.sqlcmd.dababase;
 
 public interface Dao {
-    public String connect(String command);
+    public void connect(String command);
     public String tables();
     public String clear(String tableName);
     public String drop(String tableName);
