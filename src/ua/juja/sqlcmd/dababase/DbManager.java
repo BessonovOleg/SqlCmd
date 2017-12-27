@@ -12,16 +12,14 @@ public class DbManager implements Dao{
     @Override
     public void connect(String command) {
         String result = "";
-
         String dbName = "";
-
         String userName = "";
         String password = "";
 
         try {
             Class.forName("org.postgresql.Driver");
         } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e.getMessage());
+            throw new RuntimeException(e.getMessage(),e);
         }
 
         try {
@@ -30,7 +28,7 @@ public class DbManager implements Dao{
             userName = arrayCommand[1];
             password = arrayCommand[2];
         }catch (Exception ex){
-            throw new RuntimeException("Ошибка формата команды");
+            throw new RuntimeException("Ошибка формата команды",ex);
         }
 
            try {
@@ -132,14 +130,17 @@ public class DbManager implements Dao{
             sql.append("CREATE TABLE IF NOT EXISTS ");
             sql.append(tableName);
             sql.append("(");
-            sql.append(tableName+"_id ");
-            sql.append("SERIAL NOT NULL PRIMARY KEY");
+            //sql.append(tableName+"_id ");
+            //sql.append("SERIAL NOT NULL PRIMARY KEY");
 
             for (int i = 1; i < arrayCommand.length; i++) {
-                sql.append(",");
+                if(i > 1){
+                    sql.append(",");
+                }
                 sql.append(arrayCommand[i]);
                 sql.append(" varchar(225)");
             }
+
             sql.append(")");
 
         }catch (Exception ex){
@@ -166,11 +167,10 @@ public class DbManager implements Dao{
 
         StringBuilder result = new StringBuilder();
         StringBuilder separate = new StringBuilder();
-        int countColumns;
+        int countColumns = 0;
         int[] sizeColumn = null;
         String[] columnHeaders = null;
         ArrayList<String> rows = new ArrayList<>();
-
 
         try {
             Statement stmt = connection.createStatement();
@@ -192,14 +192,23 @@ public class DbManager implements Dao{
             while (rs.next()) {
                 tmpRow = "";
                 for (int i = 1; i <= countColumns; i++) {
-                    if(i > 1){
-                        tmpRow = tmpRow + "|" + rs.getString(i);
-                    }else {
-                        tmpRow = tmpRow + rs.getString(i);
-                    }
+                    if (rs.getObject(i) != null) {
+                        if (i > 1) {
+                            tmpRow = tmpRow + "|" + rs.getString(i);
+                        } else {
+                            tmpRow = tmpRow + rs.getString(i);
+                        }
 
-                    if((rs.getString(i).length()+2) > sizeColumn[i-1] ){
-                        sizeColumn[i-1] = rs.getString(i).length()+2;
+                        if ((rs.getString(i).length() + 2) > sizeColumn[i - 1]) {
+                            sizeColumn[i - 1] = rs.getString(i).length() + 2;
+                        }
+                    }else {
+                        if(i > 1){
+                            tmpRow = tmpRow + " | ";
+                        }else {
+                            tmpRow = " ";
+                        }
+
                     }
                 }
                 rows.add(tmpRow);
@@ -211,7 +220,6 @@ public class DbManager implements Dao{
         }catch (SQLException ex){
             result.append(ex.getMessage());
         }
-
 
         //формироуем заголовочнуя строку
         separate.append("+");
@@ -228,9 +236,7 @@ public class DbManager implements Dao{
         int index = 0;
         for(String header:columnHeaders){
             result.append("+ ");
-
             result.append(header);
-
 
             if((header.length()) < sizeColumn[index]){
                 for(int j = 0; j < (sizeColumn[index] - header.length()-1);j++){
@@ -247,8 +253,7 @@ public class DbManager implements Dao{
         for(String data:rows){
             String[] cols = data.split("[|]");
 
-            for(int colIndex = 0;colIndex < cols.length;colIndex++){
-
+            for(int colIndex = 0;colIndex < cols.length ;colIndex++){
                 result.append("+ ");
                 result.append(cols[colIndex]);
 
@@ -258,7 +263,6 @@ public class DbManager implements Dao{
                     }
                 }
             }
-
             result.append("+\n");
         }
         result.append(separate.toString());
@@ -268,11 +272,59 @@ public class DbManager implements Dao{
 
 
 
-
     @Override
     public String insert(String command) {
-        return null;
+        if (isConnetionNull()) {
+            return "";
+        }
+
+        StringBuilder result = new StringBuilder();
+        String[] arrayCommand = command.split("[|]");
+        String tableName;
+        StringBuilder sql = new StringBuilder();
+
+        try {
+            tableName = arrayCommand[0];
+            sql.append("INSERT INTO ");
+            sql.append(tableName);
+            sql.append("(");
+
+            for (int indexCloumns = 1; indexCloumns < arrayCommand.length; indexCloumns += 2) {
+                if (indexCloumns > 1) {
+                    sql.append(",");
+                }
+                sql.append(arrayCommand[indexCloumns]);
+            }
+
+            sql.append(") VALUES (");
+
+            for (int indexValues = 2; indexValues < arrayCommand.length; indexValues += 2) {
+                if (indexValues > 2) {
+                    sql.append(",");
+                }
+                sql.append("'");
+                sql.append(arrayCommand[indexValues]);
+                sql.append("'");
+            }
+
+            sql.append(");");
+
+        }catch (Exception ex){
+            return "Ошибка формата команды";
+        }
+
+        try {
+            Statement stm = connection.createStatement();
+            stm.executeUpdate(sql.toString());
+            result.append("Команда выполнена успешно");
+        }catch (SQLException ex){
+            result.append("Ошибка вставки:" + ex.getMessage());
+        }
+
+        return result.toString();
     }
+
+
 
     @Override
     public String update(String command) {
@@ -285,7 +337,6 @@ public class DbManager implements Dao{
     }
 
 
-
     private boolean isConnetionNull(){
         if(connection == null){
             System.out.println("Не установлено соединение с базой данных");
@@ -295,5 +346,15 @@ public class DbManager implements Dao{
         }
     }
 
+    @Override
+    public void closeConnection(){
+        if(connection!=null){
+            try {
+                connection.close();
+            }catch (SQLException e){
+                e.printStackTrace();
+            }
+        }
+    }
 
 }

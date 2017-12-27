@@ -31,6 +31,7 @@ public class Chat {
         } else if (message.equals("help")) {
             result = TextMessages.helpText;
         } else if (message.equals("exit")) {
+            dao.closeConnection();
             result = TextMessages.goodbyText;
         } else if (message.equals("tables")) {
             result = dao.tables();
@@ -72,10 +73,12 @@ public class Chat {
                         return e.getMessage();
                     }
                 }
+
+                if(command.equals("insert")){
+                    return dao.insert(params);
+                }
             }
-
         }
-
 
 
 

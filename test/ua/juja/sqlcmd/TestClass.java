@@ -25,4 +25,15 @@ public class TestClass {
         System.out.println(dbManager.find("test"));
     }
 
+    @Test
+    public void dbManager_insert_test(){
+        DbManager dbManager = new DbManager();
+        //dbManager.connect("test|postgres|postgres");
+        Chat chat = new Chat(dbManager);
+        System.out.println(chat.parse("connect|test|postgres|postgres"));
+        System.out.println(chat.parse("insert|test|col1|Brbrbrbrbr|col2|Bubububububub|col3|wewerwersdfKoKoKo"));
+        System.out.println(chat.parse("find|test"));
+        System.out.println(chat.parse("exit"));
+    }
+
 }

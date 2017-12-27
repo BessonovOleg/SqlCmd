@@ -10,4 +10,5 @@ public interface Dao {
     public String insert(String command);
     public String update(String command);
     public String delete(String command);
+    public void closeConnection();
 }
