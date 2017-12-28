@@ -36,4 +36,14 @@ public class TestClass {
         System.out.println(chat.parse("exit"));
     }
 
+    @Test
+    public void dbManager_update_test(){
+        DbManager dbManager = new DbManager();
+        Chat chat = new Chat(dbManager);
+        System.out.println(chat.parse("connect|test|postgres|postgres"));
+        System.out.println(chat.parse("update|test|col1|BoBo|col2|pipi"));
+        System.out.println(chat.parse("exit"));
+    }
+
+
 }

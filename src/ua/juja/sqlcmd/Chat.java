@@ -77,6 +77,14 @@ public class Chat {
                 if(command.equals("insert")){
                     return dao.insert(params);
                 }
+
+                if(command.equals("update")){
+                    return dao.update(params);
+                }
+
+                if(command.equals("delete")){
+                    return dao.delete(params);
+                }
             }
         }
 

@@ -37,7 +37,6 @@ public class DbManager implements Dao{
                 connection = null;
                 throw new RuntimeException("Ошибка подключения",ex);
             }
-
     }
 
     @Override
@@ -87,7 +86,6 @@ public class DbManager implements Dao{
         }catch (Exception ex){
             result.append("Ошибка выполнения!");
         }
-
         return result.toString();
     }
 
@@ -108,7 +106,6 @@ public class DbManager implements Dao{
         }catch (Exception ex){
             result.append("Ошибка выполнения!");
         }
-
         return result.toString();
     }
 
@@ -159,6 +156,7 @@ public class DbManager implements Dao{
         return result.toString();
     }
 
+
     @Override
     public String find(String tableName) {
         if (isConnetionNull()) {
@@ -166,111 +164,15 @@ public class DbManager implements Dao{
         }
 
         StringBuilder result = new StringBuilder();
-        StringBuilder separate = new StringBuilder();
-        int countColumns = 0;
-        int[] sizeColumn = null;
-        String[] columnHeaders = null;
-        ArrayList<String> rows = new ArrayList<>();
-
         try {
             Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery("select * from " + tableName);
-            ResultSetMetaData md = rs.getMetaData();
-
-            countColumns = md.getColumnCount();
-            sizeColumn = new int[countColumns];
-            columnHeaders = new String[countColumns];
-
-
-            for (int i = 1; i <= countColumns; i++) {
-                columnHeaders[i-1] = md.getColumnName(i);
-                sizeColumn[i-1] = md.getColumnName(i).length() + 2;
-            }
-
-            String tmpRow = "";
-
-            while (rs.next()) {
-                tmpRow = "";
-                for (int i = 1; i <= countColumns; i++) {
-                    if (rs.getObject(i) != null) {
-                        if (i > 1) {
-                            tmpRow = tmpRow + "|" + rs.getString(i);
-                        } else {
-                            tmpRow = tmpRow + rs.getString(i);
-                        }
-
-                        if ((rs.getString(i).length() + 2) > sizeColumn[i - 1]) {
-                            sizeColumn[i - 1] = rs.getString(i).length() + 2;
-                        }
-                    }else {
-                        if(i > 1){
-                            tmpRow = tmpRow + " | ";
-                        }else {
-                            tmpRow = " ";
-                        }
-
-                    }
-                }
-                rows.add(tmpRow);
-            }
-
-            rs.close();
-            stmt.close();
-
+            result.append(printRecordSet(rs));
         }catch (SQLException ex){
-            result.append(ex.getMessage());
+            result.append("Ошибка:" + ex.getMessage());
         }
-
-        //формироуем заголовочнуя строку
-        separate.append("+");
-        for (int i = 0; i < sizeColumn.length; i++) {
-            for (int j = 0; j < sizeColumn[i]; j++) {
-                separate.append("-");
-            }
-            separate.append("+");
-        }
-        separate.append("\n");
-
-        result.append(separate.toString());
-
-        int index = 0;
-        for(String header:columnHeaders){
-            result.append("+ ");
-            result.append(header);
-
-            if((header.length()) < sizeColumn[index]){
-                for(int j = 0; j < (sizeColumn[index] - header.length()-1);j++){
-                    result.append(" ");
-                }
-            }
-            index++;
-        }
-
-        result.append("+");
-        result.append("\n");
-        result.append(separate.toString());
-
-        for(String data:rows){
-            String[] cols = data.split("[|]");
-
-            for(int colIndex = 0;colIndex < cols.length ;colIndex++){
-                result.append("+ ");
-                result.append(cols[colIndex]);
-
-                if(cols[colIndex].length() < sizeColumn[colIndex]){
-                    for(int j = 0; j < (sizeColumn[colIndex] - cols[colIndex].length()-1);j++){
-                        result.append(" ");
-                    }
-                }
-            }
-            result.append("+\n");
-        }
-        result.append(separate.toString());
-
         return result.toString();
     }
-
-
 
     @Override
     public String insert(String command) {
@@ -320,21 +222,151 @@ public class DbManager implements Dao{
         }catch (SQLException ex){
             result.append("Ошибка вставки:" + ex.getMessage());
         }
+        return result.toString();
+    }
+
+
+    @Override
+    public String update(String command) {
+        if (isConnetionNull()) {
+            return "";
+        }
+
+        StringBuilder result = new StringBuilder();
+        String[] arrayCommand = command.split("[|]");
+        String tableName;
+        StringBuilder sqlUpdate = new StringBuilder();
+        StringBuilder sqlWhere  = new StringBuilder();
+        StringBuilder sqlSelect = new StringBuilder();
+
+        try {
+            tableName = arrayCommand[0];
+            sqlUpdate.append("UPDATE ");
+            sqlUpdate.append(tableName);
+            sqlUpdate.append(" set ");
+            sqlSelect.append("select ");
+
+            for (int indexCloumns = 1; indexCloumns < arrayCommand.length; indexCloumns += 4) {
+                if (indexCloumns > 1) {
+                    sqlUpdate.append(",");
+                    sqlSelect.append(",");
+                }
+
+                sqlUpdate.append(arrayCommand[indexCloumns]);
+                sqlUpdate.append("='");
+                sqlUpdate.append(arrayCommand[indexCloumns+1]);
+                sqlUpdate.append("'");
+
+                sqlSelect.append(arrayCommand[indexCloumns]);
+            }
+
+            sqlWhere.append(" where ");
+
+            for (int indexValues = 3; indexValues < arrayCommand.length; indexValues += 4) {
+                if (indexValues > 3) {
+                    sqlWhere.append(" and ");
+                }
+                sqlWhere.append(arrayCommand[indexValues]);
+                sqlWhere.append(" = '");
+                sqlWhere.append(arrayCommand[indexValues+1]);
+                sqlWhere.append("'");
+            }
+
+            sqlUpdate.append(sqlWhere.toString());
+
+            sqlSelect.append(" from ");
+            sqlSelect.append(tableName);
+            sqlSelect.append(sqlWhere.toString());
+
+        }catch (Exception ex){
+            return "Ошибка формата команды";
+        }
+
+        try {
+            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery(sqlSelect.toString());
+            result.append(printRecordSet(rs));
+        }catch (SQLException ex){
+            result.append("Ошибка:" + ex.getMessage());
+        }
+
+        try {
+            Statement stm = connection.createStatement();
+            stm.executeUpdate(sqlUpdate.toString());
+            result.append("Команда выполнена успешно");
+        }catch (SQLException ex){
+            result.append("Ошибка обновления:" + ex.getMessage());
+        }
+
+        return result.toString();
+    }
+
+
+    @Override
+    public String delete(String command) {
+        if (isConnetionNull()) {
+            return "";
+        }
+
+        StringBuilder result = new StringBuilder();
+        String[] arrayCommand = command.split("[|]");
+        String tableName;
+        StringBuilder sqlDelete = new StringBuilder();
+        StringBuilder sqlSelect = new StringBuilder();
+        StringBuilder sqlWhere  = new StringBuilder();
+
+        try {
+            tableName = arrayCommand[0];
+            sqlDelete.append("Delete from ");
+            sqlDelete.append(tableName);
+            sqlWhere.append(" where ");
+            sqlSelect.append("select ");
+
+            for (int indexCloumns = 1; indexCloumns < arrayCommand.length; indexCloumns += 2) {
+                if (indexCloumns > 1) {
+                    sqlWhere.append(" and ");
+                    sqlSelect.append(",");
+                }
+
+                sqlWhere.append(arrayCommand[indexCloumns]);
+                sqlWhere.append("='");
+                sqlWhere.append(arrayCommand[indexCloumns+1]);
+                sqlWhere.append("'");
+
+                sqlSelect.append(arrayCommand[indexCloumns]);
+            }
+
+            sqlSelect.append(" from ");
+            sqlSelect.append(tableName);
+            sqlSelect.append(sqlWhere.toString());
+
+            sqlDelete.append(sqlWhere.toString());
+
+        }catch (Exception ex){
+            return "Ошибка формата команды";
+        }
+
+        try {
+            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery(sqlSelect.toString());
+            result.append(printRecordSet(rs));
+        }catch (SQLException ex){
+            result.append("Ошибка:" + ex.getMessage());
+        }
+
+        try {
+            Statement stm = connection.createStatement();
+            stm.executeUpdate(sqlDelete.toString());
+            result.append("Команда выполнена успешно");
+        }catch (SQLException ex){
+            result.append("Ошибка обновления:" + ex.getMessage());
+        }
 
         return result.toString();
     }
 
 
 
-    @Override
-    public String update(String command) {
-        return null;
-    }
-
-    @Override
-    public String delete(String command) {
-        return null;
-    }
 
 
     private boolean isConnetionNull(){
@@ -345,6 +377,107 @@ public class DbManager implements Dao{
             return false;
         }
     }
+
+
+    public String printRecordSet(ResultSet rs) {
+        StringBuilder result = new StringBuilder();
+        StringBuilder separate = new StringBuilder();
+        int countColumns = 0;
+        int[] sizeColumn = null;
+        String[] columnHeaders = null;
+        ArrayList<String> rows = new ArrayList<>();
+
+        try {
+            ResultSetMetaData md = rs.getMetaData();
+            countColumns = md.getColumnCount();
+            sizeColumn = new int[countColumns];
+            columnHeaders = new String[countColumns];
+
+            for (int i = 1; i <= countColumns; i++) {
+                columnHeaders[i-1] = md.getColumnName(i);
+                sizeColumn[i-1] = md.getColumnName(i).length() + 2;
+            }
+
+            String tmpRow = "";
+
+            while (rs.next()) {
+                tmpRow = "";
+                for (int i = 1; i <= countColumns; i++) {
+                    if (rs.getObject(i) != null) {
+                        if (i > 1) {
+                            tmpRow = tmpRow + "|" + rs.getString(i);
+                        } else {
+                            tmpRow = tmpRow + rs.getString(i);
+                        }
+
+                        if ((rs.getString(i).length() + 2) > sizeColumn[i - 1]) {
+                            sizeColumn[i - 1] = rs.getString(i).length() + 2;
+                        }
+                    }else {
+                        if(i > 1){
+                            tmpRow = tmpRow + " | ";
+                        }else {
+                            tmpRow = " ";
+                        }
+                    }
+                }
+                rows.add(tmpRow);
+            }
+            rs.close();
+        }catch (SQLException ex){
+            result.append(ex.getMessage());
+        }
+
+        //формироуем заголовочнуя строку
+        separate.append("+");
+        for (int i = 0; i < sizeColumn.length; i++) {
+            for (int j = 0; j < sizeColumn[i]; j++) {
+                separate.append("-");
+            }
+            separate.append("+");
+        }
+        separate.append("\n");
+
+        result.append(separate.toString());
+
+        int index = 0;
+        for(String header:columnHeaders){
+            result.append("+ ");
+            result.append(header);
+
+            if((header.length()) < sizeColumn[index]){
+                for(int j = 0; j < (sizeColumn[index] - header.length()-1);j++){
+                    result.append(" ");
+                }
+            }
+            index++;
+        }
+
+        result.append("+");
+        result.append("\n");
+        result.append(separate.toString());
+
+        for(String data:rows){
+            String[] cols = data.split("[|]");
+
+            for(int colIndex = 0;colIndex < cols.length ;colIndex++){
+                result.append("+ ");
+                result.append(cols[colIndex]);
+
+                if(cols[colIndex].length() < sizeColumn[colIndex]){
+                    for(int j = 0; j < (sizeColumn[colIndex] - cols[colIndex].length()-1);j++){
+                        result.append(" ");
+                    }
+                }
+            }
+            result.append("+\n");
+        }
+        result.append(separate.toString());
+        return result.toString();
+    }
+
+
+
 
     @Override
     public void closeConnection(){

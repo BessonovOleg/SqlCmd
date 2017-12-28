@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b0a836f0-c951-4fab-bb22-7e9e7dfdbca7" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/SqlCmd/ua/juja/sqlcmd/dababase/Dao.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/SqlCmd/ua/juja/sqlcmd/dababase/DbManager.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/SqlCmd/ua/juja/sqlcmd/dababase/Table.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ua/juja/sqlcmd/dababase/Table.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ua/juja/sqlcmd/Chat.java" afterPath="$PROJECT_DIR$/src/ua/juja/sqlcmd/Chat.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ua/juja/sqlcmd/dababase/Dao.java" afterPath="$PROJECT_DIR$/src/ua/juja/sqlcmd/dababase/Dao.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ua/juja/sqlcmd/dababase/DbManager.java" afterPath="$PROJECT_DIR$/src/ua/juja/sqlcmd/dababase/DbManager.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/ua/juja/sqlcmd/TestClass.java" afterPath="$PROJECT_DIR$/test/ua/juja/sqlcmd/TestClass.java" />
     </list>
@@ -29,8 +23,8 @@
       <file leaf-file-name="SqlCmd.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ua/juja/sqlcmd/SqlCmd.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="17" column="9" lean-forward="true" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
+            <state relative-caret-position="294">
+              <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -38,11 +32,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Chat.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Chat.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ua/juja/sqlcmd/Chat.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="121">
-              <caret line="47" column="21" lean-forward="true" selection-start-line="47" selection-start-column="21" selection-end-line="47" selection-end-column="21" />
+            <state relative-caret-position="341">
+              <caret line="85" column="20" lean-forward="false" selection-start-line="85" selection-start-column="20" selection-end-line="85" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -51,8 +45,8 @@
       <file leaf-file-name="TestClass.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/ua/juja/sqlcmd/TestClass.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="263">
-              <caret line="38" column="1" lean-forward="true" selection-start-line="38" selection-start-column="1" selection-end-line="38" selection-end-column="1" />
+            <state relative-caret-position="196">
+              <caret line="44" column="47" lean-forward="true" selection-start-line="44" selection-start-column="47" selection-end-line="44" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -60,17 +54,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DbManager.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DbManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ua/juja/sqlcmd/dababase/DbManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="25" column="57" lean-forward="true" selection-start-line="25" selection-start-column="57" selection-end-line="25" selection-end-column="57" />
+            <state relative-caret-position="175">
+              <caret line="349" column="58" lean-forward="true" selection-start-line="349" selection-start-column="58" selection-end-line="349" selection-end-column="58" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <marker date="1514389308916" expanded="true" signature="1442:1638" ph="SELECT table... tables" />
-                <marker date="1514389308916" expanded="true" signature="2203:2215" ph="delete from " />
-                <marker date="1514389308916" expanded="true" signature="2809:2820" ph="drop table m... " />
-                <marker date="1514389308916" expanded="true" signature="4965:4979" ph="select * fro... missingValue" />
+                <marker date="1514464336031" expanded="true" signature="1441:1637" ph="SELECT table... tables" />
+                <marker date="1514464336031" expanded="true" signature="2202:2214" ph="delete from " />
+                <marker date="1514464336031" expanded="true" signature="2807:2818" ph="drop table m... " />
+                <marker date="1514464336031" expanded="true" signature="4754:4768" ph="select * fro... missingValue" />
               </folding>
             </state>
           </provider>
@@ -118,9 +112,9 @@
         <option value="$PROJECT_DIR$/libraries/postgresql-42.1.4.jre7.jar!/org/postgresql/Driver.class" />
         <option value="$PROJECT_DIR$/src/ua/juja/sqlcmd/SqlCmd.java" />
         <option value="$PROJECT_DIR$/src/ua/juja/sqlcmd/dababase/Dao.java" />
-        <option value="$PROJECT_DIR$/src/ua/juja/sqlcmd/Chat.java" />
         <option value="$PROJECT_DIR$/test/ua/juja/sqlcmd/TestClass.java" />
         <option value="$PROJECT_DIR$/src/ua/juja/sqlcmd/dababase/DbManager.java" />
+        <option value="$PROJECT_DIR$/src/ua/juja/sqlcmd/Chat.java" />
       </list>
     </option>
   </component>
@@ -229,31 +223,6 @@
       <module name="SqlCmd" />
       <envs />
     </configuration>
-    <configuration name="TestClass.DbManagerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="ua.juja.sqlcmd.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="SqlCmd" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="ua.juja.sqlcmd" />
-      <option name="MAIN_CLASS_NAME" value="ua.juja.sqlcmd.TestClass" />
-      <option name="METHOD_NAME" value="DbManagerTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-    </configuration>
     <configuration name="TestClass.dbManagerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -317,6 +286,31 @@
       <option name="PACKAGE_NAME" value="ua.juja.sqlcmd" />
       <option name="MAIN_CLASS_NAME" value="ua.juja.sqlcmd.TestClass" />
       <option name="METHOD_NAME" value="dbManager_insert_test" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+    </configuration>
+    <configuration name="TestClass.dbManager_update_test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="ua.juja.sqlcmd.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="SqlCmd" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="ua.juja.sqlcmd" />
+      <option name="MAIN_CLASS_NAME" value="ua.juja.sqlcmd.TestClass" />
+      <option name="METHOD_NAME" value="dbManager_update_test" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -703,18 +697,18 @@
     </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Application.SqlCmd" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.TestClass.DbManagerTest" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.TestClass.dbManager_find" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.TestClass.dbManagerTest" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.TestClass.dbManager_insert_test" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.TestClass.dbManager_find" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.TestClass.dbManagerTest" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.TestClass.dbManager_insert_test" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.TestClass.dbManager_update_test" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Application.SqlCmd" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.TestClass.dbManager_insert_test" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.TestClass.dbManager_find" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.TestClass.dbManagerTest" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.TestClass.DbManagerTest" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.TestClass.dbManager_update_test" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.TestClass.dbManager_insert_test" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.TestClass.dbManager_find" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.TestClass.dbManagerTest" />
       </list>
     </recent_temporary>
   </component>
@@ -729,48 +723,47 @@
       <option name="presentableId" value="Default" />
       <updated>1513973855687</updated>
       <workItem from="1513973865587" duration="27175000" />
-      <workItem from="1514200276956" duration="38542000" />
+      <workItem from="1514200276956" duration="48041000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="TestClass_dbManager_insert_test - 2017.12.27 at 12h 34m 53s.xml">
-      <configuration name="TestClass.dbManager_insert_test" configurationId="JUnit" />
+    <history-entry file="TestClass_dbManager_update_test - 2017.12.28 at 11h 29m 29s.xml">
+      <configuration name="TestClass.dbManager_update_test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestClass_dbManager_insert_test - 2017.12.27 at 12h 35m 11s.xml">
-      <configuration name="TestClass.dbManager_insert_test" configurationId="JUnit" />
+    <history-entry file="TestClass_dbManager_update_test - 2017.12.28 at 11h 29m 58s.xml">
+      <configuration name="TestClass.dbManager_update_test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestClass_dbManager_insert_test - 2017.12.27 at 12h 40m 11s.xml">
-      <configuration name="TestClass.dbManager_insert_test" configurationId="JUnit" />
+    <history-entry file="TestClass_dbManager_update_test - 2017.12.28 at 11h 30m 03s.xml">
+      <configuration name="TestClass.dbManager_update_test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestClass_dbManager_insert_test - 2017.12.27 at 12h 42m 11s.xml">
-      <configuration name="TestClass.dbManager_insert_test" configurationId="JUnit" />
+    <history-entry file="TestClass_dbManager_update_test - 2017.12.28 at 11h 30m 24s.xml">
+      <configuration name="TestClass.dbManager_update_test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestClass_dbManager_insert_test - 2017.12.27 at 12h 42m 59s.xml">
-      <configuration name="TestClass.dbManager_insert_test" configurationId="JUnit" />
+    <history-entry file="TestClass_dbManager_update_test - 2017.12.28 at 11h 30m 27s.xml">
+      <configuration name="TestClass.dbManager_update_test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestClass_dbManager_insert_test - 2017.12.27 at 12h 47m 29s.xml">
-      <configuration name="TestClass.dbManager_insert_test" configurationId="JUnit" />
+    <history-entry file="TestClass_dbManager_update_test - 2017.12.28 at 11h 30m 43s.xml">
+      <configuration name="TestClass.dbManager_update_test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestClass_dbManager_insert_test - 2017.12.27 at 12h 48m 29s.xml">
-      <configuration name="TestClass.dbManager_insert_test" configurationId="JUnit" />
+    <history-entry file="TestClass_dbManager_update_test - 2017.12.28 at 11h 45m 42s.xml">
+      <configuration name="TestClass.dbManager_update_test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestClass_dbManager_insert_test - 2017.12.27 at 12h 49m 00s.xml">
-      <configuration name="TestClass.dbManager_insert_test" configurationId="JUnit" />
+    <history-entry file="TestClass_dbManager_update_test - 2017.12.28 at 11h 46m 08s.xml">
+      <configuration name="TestClass.dbManager_update_test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestClass_dbManager_insert_test - 2017.12.27 at 16h 25m 17s.xml">
-      <configuration name="TestClass.dbManager_insert_test" configurationId="JUnit" />
+    <history-entry file="TestClass_dbManager_update_test - 2017.12.28 at 11h 49m 49s.xml">
+      <configuration name="TestClass.dbManager_update_test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestClass_dbManager_insert_test - 2017.12.27 at 16h 27m 47s.xml">
-      <configuration name="TestClass.dbManager_insert_test" configurationId="JUnit" />
+    <history-entry file="TestClass_dbManager_update_test - 2017.12.28 at 11h 50m 14s.xml">
+      <configuration name="TestClass.dbManager_update_test" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="65717000" />
+    <option name="totallyTimeSpent" value="75216000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-4" y="-4" width="1374" height="732" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -780,7 +773,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.44535074" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.7340946" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37683523" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -868,7 +861,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="13" />
+      <option name="time" value="16" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="JUnit">
@@ -939,10 +932,10 @@
           <caret line="189" column="17" lean-forward="true" selection-start-line="189" selection-start-column="17" selection-end-line="189" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1514389308916" expanded="true" signature="1442:1638" ph="SELECT table... tables" />
-            <marker date="1514389308916" expanded="true" signature="2203:2215" ph="delete from " />
-            <marker date="1514389308916" expanded="true" signature="2809:2820" ph="drop table m... " />
-            <marker date="1514389308916" expanded="true" signature="4965:4979" ph="select * fro... missingValue" />
+            <marker date="1514464336031" expanded="true" signature="1441:1637" ph="SELECT table... tables" />
+            <marker date="1514464336031" expanded="true" signature="2202:2214" ph="delete from " />
+            <marker date="1514464336031" expanded="true" signature="2807:2818" ph="drop table m... " />
+            <marker date="1514464336031" expanded="true" signature="4754:4768" ph="select * fro... missingValue" />
           </folding>
         </state>
       </provider>
@@ -1097,28 +1090,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/ua/juja/sqlcmd/TestClass.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="38" column="1" lean-forward="true" selection-start-line="38" selection-start-column="1" selection-end-line="38" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ua/juja/sqlcmd/Chat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="47" column="21" lean-forward="true" selection-start-line="47" selection-start-column="21" selection-end-line="47" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ua/juja/sqlcmd/SqlCmd.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="17" column="9" lean-forward="true" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
+        <state relative-caret-position="294">
+          <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1127,15 +1102,33 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ua/juja/sqlcmd/dababase/DbManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="25" column="57" lean-forward="true" selection-start-line="25" selection-start-column="57" selection-end-line="25" selection-end-column="57" />
+        <state relative-caret-position="175">
+          <caret line="349" column="58" lean-forward="true" selection-start-line="349" selection-start-column="58" selection-end-line="349" selection-end-column="58" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1514389308916" expanded="true" signature="1442:1638" ph="SELECT table... tables" />
-            <marker date="1514389308916" expanded="true" signature="2203:2215" ph="delete from " />
-            <marker date="1514389308916" expanded="true" signature="2809:2820" ph="drop table m... " />
-            <marker date="1514389308916" expanded="true" signature="4965:4979" ph="select * fro... missingValue" />
+            <marker date="1514464336031" expanded="true" signature="1441:1637" ph="SELECT table... tables" />
+            <marker date="1514464336031" expanded="true" signature="2202:2214" ph="delete from " />
+            <marker date="1514464336031" expanded="true" signature="2807:2818" ph="drop table m... " />
+            <marker date="1514464336031" expanded="true" signature="4754:4768" ph="select * fro... missingValue" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/ua/juja/sqlcmd/TestClass.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="44" column="47" lean-forward="true" selection-start-line="44" selection-start-column="47" selection-end-line="44" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ua/juja/sqlcmd/Chat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="341">
+          <caret line="85" column="20" lean-forward="false" selection-start-line="85" selection-start-column="20" selection-end-line="85" selection-end-column="20" />
+          <folding />
         </state>
       </provider>
     </entry>
