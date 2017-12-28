@@ -1,6 +1,8 @@
-package ua.juja.sqlcmd;
+package ua.juja.sqlcmd.main;
 
 import ua.juja.sqlcmd.dababase.DbManager;
+
+
 import java.util.Scanner;
 
 public class SqlCmd {
@@ -16,6 +18,5 @@ public class SqlCmd {
             sentence = scanner.nextLine();
             System.out.println(chat.parse(sentence));
         }
-
     }
 }

@@ -1,7 +1,8 @@
-package ua.juja.sqlcmd;
+package ua.juja.sqlcmd.main;
 
 
 import ua.juja.sqlcmd.dababase.Dao;
+import ua.juja.sqlcmd.utils.TextMessages;
 
 public class Chat {
 
@@ -87,8 +88,6 @@ public class Chat {
                 }
             }
         }
-
-
 
         return result;
     }

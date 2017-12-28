@@ -1,9 +1,9 @@
 package ua.juja.sqlcmd;
 
 
-import org.junit.Assert;
 import org.junit.Test;
 import ua.juja.sqlcmd.dababase.DbManager;
+import ua.juja.sqlcmd.main.Chat;
 
 
 public class TestClass {

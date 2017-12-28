@@ -1,4 +1,4 @@
-package ua.juja.sqlcmd;
+package ua.juja.sqlcmd.utils;
 
 
 public class TextMessages {
