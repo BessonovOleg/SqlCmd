@@ -45,6 +45,7 @@ public class Chat {
                params = message.substring(indexSeparator+1,message.length());
             }
 
+
             if (command.equals("connect")) {
                 try {
                     dao.connect(params);
