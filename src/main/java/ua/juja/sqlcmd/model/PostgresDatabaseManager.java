@@ -4,17 +4,17 @@ import java.sql.*;
 import java.util.ArrayList;
 
 
-public class DbManager implements DatabaseManager {
+public class PostgresDatabaseManager implements DatabaseManager {
 
+    private String socket;
     Connection connection = null;
 
-    @Override
-    public void connect(String command) {
-        String result = "";
-        String dbName = "";
-        String userName = "";
-        String password = "";
+    public PostgresDatabaseManager(String socket) {
+        this.socket = socket;
+    }
 
+    @Override
+    public void connect(String dbName, String userName, String password) {
         try {
             Class.forName("org.postgresql.Driver");
         } catch (ClassNotFoundException e) {
@@ -22,20 +22,11 @@ public class DbManager implements DatabaseManager {
         }
 
         try {
-            String[] arrayCommand = command.split("[|]");
-            dbName = arrayCommand[0];
-            userName = arrayCommand[1];
-            password = arrayCommand[2];
-        }catch (Exception ex){
-            throw new RuntimeException("Ошибка формата команды",ex);
-        }
-
-           try {
-                connection = DriverManager.getConnection("jdbc:postgresql://127.0.0.1:5432/" + dbName+"?loggerLevel=OFF", userName, password);
-            } catch (Exception ex) {
+            connection = DriverManager.getConnection("jdbc:postgresql://"+socket+"/" + dbName+"?loggerLevel=OFF", userName, password);
+        } catch (Exception ex) {
                 connection = null;
-                throw new RuntimeException("Ошибка подключения",ex);
-            }
+                throw new RuntimeException(ex);
+        }
     }
 
     @Override

@@ -1,23 +1,18 @@
 package ua.juja.sqlcmd.main;
 
 import ua.juja.sqlcmd.controller.CommandController;
-import ua.juja.sqlcmd.model.DbManager;
+import ua.juja.sqlcmd.model.DatabaseManager;
+import ua.juja.sqlcmd.model.PostgresDatabaseManager;
+import ua.juja.sqlcmd.views.ConsoleView;
+import ua.juja.sqlcmd.views.View;
 
-
-import java.util.Scanner;
 
 public class SqlCmd {
-
     public static void main(String[] args) {
-        DbManager dbManager = new DbManager();
-        CommandController commandController = new CommandController(dbManager);
-        Scanner scanner = new Scanner(System.in);
-        String sentence = "";
-
-
-        while (!sentence.equals("exit")) {
-            sentence = scanner.nextLine();
-            System.out.println(commandController.parse(sentence));
-        }
+        DatabaseManager databaseManager = new PostgresDatabaseManager("127.0.0.1:5432");
+        View view = new ConsoleView();
+        view.write("Привет пользователь, введи команду или Help для получения списка команд");
+        CommandController commandController = new CommandController(databaseManager,view);
+        commandController.run();
     }
 }

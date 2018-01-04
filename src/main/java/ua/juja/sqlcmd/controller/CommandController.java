@@ -1,32 +1,58 @@
 package ua.juja.sqlcmd.controller;
 
-
+import ua.juja.sqlcmd.commands.Command;
+import ua.juja.sqlcmd.commands.Connect;
+import ua.juja.sqlcmd.commands.Help;
 import ua.juja.sqlcmd.model.DatabaseManager;
+import ua.juja.sqlcmd.views.View;
+import java.util.ArrayList;
 
 public class CommandController {
 
-    DatabaseManager databaseManager;
+    private DatabaseManager databaseManager;
+    private View view;
+    private ArrayList<Command> commands = new ArrayList<>();
 
-    public CommandController(DatabaseManager databaseManager){
+    public CommandController(DatabaseManager databaseManager,View view){
         this.databaseManager = databaseManager;
+        this.view = view;
+
+        commands.add(new Connect(this.databaseManager,this.view));
+        commands.add(new Help(commands));
     }
 
 
-    public String parse(String message){
+    public void run(){
+
+        String commandText;
+        commandText = view.getInput();
+
+        for(Command cmd:commands){
+            if(cmd.canExecute(commandText)){
+                cmd.execute(commandText);
+                break;
+            }
+        }
+
+
+
         String result = "текст неопознан, наберите help для получения списка команд";
+    }
+
+    public void parse(String message){
         String command;
         String params = "";
         int indexSeparator = 0;
 
         if (message == null) {
-            return result;
+            //return result;
         } else if (message.equals("help")) {
-            result = "";
+           // result = "";
         } else if (message.equals("exit")) {
             databaseManager.closeConnection();
-            result = "";
+           // result = "";
         } else if (message.equals("tables")) {
-            result = databaseManager.tables();
+           /// result = databaseManager.tables();
         } else {
             String[] arrayCommand = message.split("[|]");
             command = arrayCommand[0];
@@ -37,51 +63,42 @@ public class CommandController {
             }
 
 
-            if (command.equals("connect")) {
-                try {
-                    databaseManager.connect(params);
-                    return "подключение успешно установлено";
-                }catch (Exception e){
-                    return "Ошибка подключения по причине: " + e.getMessage() + " " + e.getCause().getMessage();
-                }
-            }
-
             if(arrayCommand.length>1){
                 if(command.equals("clear")){
-                    return databaseManager.clear(params);
+     //               return databaseManager.clear(params);
                 }
 
                 if(command.equals("drop")){
-                    return databaseManager.drop(params);
+       //             return databaseManager.drop(params);
                 }
 
                 if(command.equals("create")){
-                    return databaseManager.create(params);
+         //           return databaseManager.create(params);
                 }
 
                 if(command.equals("find")){
                     try {
-                        return databaseManager.find(params);
+           //             return databaseManager.find(params);
                     }catch (Exception e){
-                        return e.getMessage();
+             //           return e.getMessage();
                     }
                 }
 
                 if(command.equals("insert")){
-                    return databaseManager.insert(params);
+            //        return databaseManager.insert(params);
                 }
 
                 if(command.equals("update")){
-                    return databaseManager.update(params);
+              //      return databaseManager.update(params);
                 }
 
                 if(command.equals("delete")){
-                    return databaseManager.delete(params);
+                //    return databaseManager.delete(params);
                 }
             }
         }
 
-        return result;
+
     }
 
 

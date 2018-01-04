@@ -1,7 +1,7 @@
 package ua.juja.sqlcmd.model;
 
 public interface DatabaseManager {
-    void connect(String command);
+    void connect(String dbName, String userName, String password);
     String tables();
     String clear(String tableName);
     String drop(String tableName);
