@@ -1,11 +1,10 @@
-package ua.juja.sqlcmd.dababase;
+package ua.juja.sqlcmd.model;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 
-public class DbManager implements Dao{
+public class DbManager implements DatabaseManager {
 
     Connection connection = null;
 

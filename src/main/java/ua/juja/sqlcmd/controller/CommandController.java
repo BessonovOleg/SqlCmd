@@ -1,23 +1,14 @@
-package ua.juja.sqlcmd.main;
+package ua.juja.sqlcmd.controller;
 
 
-import ua.juja.sqlcmd.dababase.Dao;
-import ua.juja.sqlcmd.utils.TextMessages;
+import ua.juja.sqlcmd.model.DatabaseManager;
 
-public class Chat {
+public class CommandController {
 
-    Dao dao;
+    DatabaseManager databaseManager;
 
-    public Chat(Dao dao){
-        this.dao = dao;
-    }
-
-    public String getHelloMsg(){
-        return TextMessages.helloText;
-    }
-
-    public String getGoodbyMsg(){
-        return TextMessages.goodbyText;
+    public CommandController(DatabaseManager databaseManager){
+        this.databaseManager = databaseManager;
     }
 
 
@@ -30,12 +21,12 @@ public class Chat {
         if (message == null) {
             return result;
         } else if (message.equals("help")) {
-            result = TextMessages.helpText;
+            result = "";
         } else if (message.equals("exit")) {
-            dao.closeConnection();
-            result = TextMessages.goodbyText;
+            databaseManager.closeConnection();
+            result = "";
         } else if (message.equals("tables")) {
-            result = dao.tables();
+            result = databaseManager.tables();
         } else {
             String[] arrayCommand = message.split("[|]");
             command = arrayCommand[0];
@@ -48,7 +39,7 @@ public class Chat {
 
             if (command.equals("connect")) {
                 try {
-                    dao.connect(params);
+                    databaseManager.connect(params);
                     return "подключение успешно установлено";
                 }catch (Exception e){
                     return "Ошибка подключения по причине: " + e.getMessage() + " " + e.getCause().getMessage();
@@ -57,35 +48,35 @@ public class Chat {
 
             if(arrayCommand.length>1){
                 if(command.equals("clear")){
-                    return dao.clear(params);
+                    return databaseManager.clear(params);
                 }
 
                 if(command.equals("drop")){
-                    return dao.drop(params);
+                    return databaseManager.drop(params);
                 }
 
                 if(command.equals("create")){
-                    return dao.create(params);
+                    return databaseManager.create(params);
                 }
 
                 if(command.equals("find")){
                     try {
-                        return dao.find(params);
+                        return databaseManager.find(params);
                     }catch (Exception e){
                         return e.getMessage();
                     }
                 }
 
                 if(command.equals("insert")){
-                    return dao.insert(params);
+                    return databaseManager.insert(params);
                 }
 
                 if(command.equals("update")){
-                    return dao.update(params);
+                    return databaseManager.update(params);
                 }
 
                 if(command.equals("delete")){
-                    return dao.delete(params);
+                    return databaseManager.delete(params);
                 }
             }
         }
