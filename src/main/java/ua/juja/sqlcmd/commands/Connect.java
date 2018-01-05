@@ -6,7 +6,14 @@ import ua.juja.sqlcmd.views.View;
 public class Connect implements Command{
     private DatabaseManager databaseManager;
     private View view;
-    private String helpText = "\nConnect - подключение к базе данных \n \tConnect|DatabaseName|UserName|Password\n";
+    public final String COMMAND_TEXT = "connect";
+    private String helpText =  "сonnect\n" +
+            "Команда для подключения к соответствующей БД\n" +
+            "Формат команды: connect | database | username | password\n" +
+            "\t где: database - имя БД\n" +
+            "\t username -  имя пользователя БД\n" +
+            "\t password - пароль пользователя БД\n" +
+            "--------------------------------------------------";
 
     public Connect(DatabaseManager databaseManager, View view){
         this.databaseManager = databaseManager;
@@ -15,7 +22,7 @@ public class Connect implements Command{
 
     @Override
     public boolean canExecute(String command) {
-        return command.startsWith("Connect");
+        return command.toLowerCase().startsWith(COMMAND_TEXT);
     }
 
     @Override
@@ -31,6 +38,7 @@ public class Connect implements Command{
             password = arrayCommand[3];
         }catch (Exception ex){
             view.write("Ошибка формата команды");
+            return;
         }
 
         try {
