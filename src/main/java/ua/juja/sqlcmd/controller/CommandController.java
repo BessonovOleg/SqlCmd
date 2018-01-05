@@ -30,6 +30,7 @@ public class CommandController {
         delete
         *help
         *exit
+        *
   */
 
         commands.add(new Connect(databaseManager,view));
