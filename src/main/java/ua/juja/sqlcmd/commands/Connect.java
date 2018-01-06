@@ -10,7 +10,6 @@ public class Connect implements Command{
     private DatabaseManager databaseManager;
     private View view;
 
-
     public Connect(DatabaseManager databaseManager, View view){
         this.databaseManager = databaseManager;
         this.view = view;
@@ -24,9 +23,9 @@ public class Connect implements Command{
 
     @Override
     public void execute(String command) {
-        String dbName   = "";
-        String userName = "";
-        String password = "";
+        String dbName;
+        String userName;
+        String password;
 
         try {
             String[] arrayCommand = CommandParser.getArray(command);

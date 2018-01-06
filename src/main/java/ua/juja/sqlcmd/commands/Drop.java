@@ -25,8 +25,7 @@ public class Drop implements Command{
     public void execute(String command) {
         String tableName;
         try {
-            String[] arrayCommand = CommandParser.getArray(command);
-            tableName = arrayCommand[1];
+            tableName = CommandParser.getTableName(command);
         }catch (Exception ex){
             view.write("Ошибка формата команды");
             return;

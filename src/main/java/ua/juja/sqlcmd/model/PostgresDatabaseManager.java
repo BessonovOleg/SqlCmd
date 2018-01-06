@@ -5,7 +5,7 @@ public class PostgresDatabaseManager implements DatabaseManager {
 
     private String socket;
     private String notConnectedText = "Подключение к базе не установлено!";
-    Connection connection = null;
+    private Connection connection = null;
 
     public PostgresDatabaseManager(String socket) {
         this.socket = socket;
@@ -37,11 +37,11 @@ public class PostgresDatabaseManager implements DatabaseManager {
 
         try {
             Statement stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT table_name as tblName\n" +
-                    " FROM information_schema.tables\n" +
-                    " WHERE table_schema='public'\n" +
-                    " AND table_type='BASE TABLE';\n");
 
+            ResultSet rs = stmt.executeQuery("select table_name as tblName " +
+                                        " from information_schema.tables " +
+                                        " where table_schema='public' " +
+                                        " and table_type='BASE TABLE'; ");
             while (rs.next()) {
                 result.append("\t").append(rs.getString("tblName")).append("\n");
             }
@@ -62,12 +62,11 @@ public class PostgresDatabaseManager implements DatabaseManager {
         }
 
         StringBuilder result = new StringBuilder();
-        int countDelRows = 0;
 
         try{
             String sql = "delete from " + tableName;
             Statement stm = connection.createStatement();
-            countDelRows = stm.executeUpdate(sql);
+            int countDelRows = stm.executeUpdate(sql);
             result.append("Команда выполнена. Удалено: ").append(countDelRows).append(" строк");
             stm.close();
         }catch (Exception ex){
@@ -145,8 +144,8 @@ public class PostgresDatabaseManager implements DatabaseManager {
             throw new RuntimeException(notConnectedText);
         }
 
-        ResultSet rs = null;
-        StringBuilder result = new StringBuilder();
+        ResultSet rs;
+
         try {
             Statement stmt = connection.createStatement();
             rs = stmt.executeQuery("select * from " + tableName);
@@ -202,18 +201,18 @@ public class PostgresDatabaseManager implements DatabaseManager {
             stm.executeUpdate(sql.toString());
             result.append("Команда выполнена успешно");
         }catch (SQLException ex){
-            result.append("Ошибка вставки:" + ex.getMessage());
+            return ("Ошибка вставки:" + ex.getMessage());
         }
         return result.toString();
     }
 
     @Override
-    public String update(String command) {
+    public ResultSet update(String command) {
         if (isConnectionNull()) {
-            return notConnectedText;
+            throw new RuntimeException(notConnectedText);
         }
 
-        StringBuilder result = new StringBuilder();
+        ResultSet rs;
         String[] arrayCommand = command.split("[|]");
         String tableName;
         StringBuilder sqlUpdate = new StringBuilder();
@@ -227,18 +226,18 @@ public class PostgresDatabaseManager implements DatabaseManager {
             sqlUpdate.append(" set ");
             sqlSelect.append("select ");
 
-            for (int indexCloumns = 1; indexCloumns < arrayCommand.length; indexCloumns += 4) {
-                if (indexCloumns > 1) {
+            for (int indexColumn = 1; indexColumn < arrayCommand.length; indexColumn += 4) {
+                if (indexColumn > 1) {
                     sqlUpdate.append(",");
                     sqlSelect.append(",");
                 }
 
-                sqlUpdate.append(arrayCommand[indexCloumns]);
+                sqlUpdate.append(arrayCommand[indexColumn]);
                 sqlUpdate.append("='");
-                sqlUpdate.append(arrayCommand[indexCloumns+1]);
+                sqlUpdate.append(arrayCommand[indexColumn+1]);
                 sqlUpdate.append("'");
 
-                sqlSelect.append(arrayCommand[indexCloumns]);
+                sqlSelect.append(arrayCommand[indexColumn]);
             }
 
             sqlWhere.append(" where ");
@@ -260,26 +259,25 @@ public class PostgresDatabaseManager implements DatabaseManager {
             sqlSelect.append(sqlWhere.toString());
 
         }catch (Exception ex){
-            return "Ошибка формата команды";
+            throw new RuntimeException("Ошибка формата команды");
         }
 
         try {
             Statement stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery(sqlSelect.toString());
-            //result.append(printRecordSet(rs));
+            rs = stmt.executeQuery(sqlSelect.toString());
+
         }catch (SQLException ex){
-            result.append("Ошибка:" + ex.getMessage());
+            throw new RuntimeException("Ошибка:" + ex.getMessage());
         }
 
         try {
             Statement stm = connection.createStatement();
             stm.executeUpdate(sqlUpdate.toString());
-            result.append("Команда выполнена успешно");
         }catch (SQLException ex){
-            result.append("Ошибка обновления:" + ex.getMessage());
+            throw new RuntimeException("Ошибка обновления:" + ex.getMessage());
         }
 
-        return result.toString();
+        return rs;
     }
 
     @Override
@@ -343,11 +341,7 @@ public class PostgresDatabaseManager implements DatabaseManager {
     }
 
     private boolean isConnectionNull(){
-        if(connection == null){
-            return true;
-        }else {
-            return false;
-        }
+        return (connection == null);
     }
 
     @Override

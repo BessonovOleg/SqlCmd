@@ -17,4 +17,15 @@ public class CommandParser {
     public static String[] getArray(String command){
         return command.split("[|]");
     }
+
+    public static String getTableName(String command){
+        String result;
+        try {
+            String[] arrayCommand = getArray(command);
+            result = arrayCommand[1];
+        }catch (Exception e){
+            throw new RuntimeException("Ошибка формата команды");
+        }
+        return result;
+    }
 }

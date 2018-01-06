@@ -4,19 +4,13 @@ import ua.juja.sqlcmd.model.DatabaseManager;
 import ua.juja.sqlcmd.model.RecordsTable;
 import ua.juja.sqlcmd.model.RecordsTableImpl;
 import ua.juja.sqlcmd.utils.CommandChecker;
+import ua.juja.sqlcmd.utils.CommandParser;
 import ua.juja.sqlcmd.views.View;
 
 public class Find implements Command{
 
     private DatabaseManager databaseManager;
     private View view;
-    private final String COMMAND_TEXT = "find";
-
-    private String helpText = "find\n"+
-            "Команда для получения содержимого указанной таблицы\n"+
-            "Формат: find | tableName\n"+
-            "\tгде tableName - имя таблицы\n"+
-            "--------------------------------------------------";
 
     public Find(DatabaseManager databaseManager, View view) {
         this.databaseManager = databaseManager;
@@ -25,6 +19,7 @@ public class Find implements Command{
 
     @Override
     public boolean canExecute(String command) {
+        String COMMAND_TEXT = "find";
         return CommandChecker.check(command,COMMAND_TEXT);
     }
 
@@ -32,8 +27,7 @@ public class Find implements Command{
     public void execute(String command) {
         String tableName;
         try {
-            String[] arrayCommand = command.split("[|]");
-            tableName = arrayCommand[1];
+            tableName = CommandParser.getTableName(command);
         }catch (Exception ex){
             view.write("Ошибка формата команды");
             return;
@@ -50,6 +44,12 @@ public class Find implements Command{
 
     @Override
     public void printHelp() {
+        String helpText = "find\n"+
+                "Команда для получения содержимого указанной таблицы\n"+
+                "Формат: find | tableName\n"+
+                "\tгде tableName - имя таблицы\n"+
+                "--------------------------------------------------";
+
         view.write(helpText);
     }
 }

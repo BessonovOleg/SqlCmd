@@ -10,7 +10,7 @@ public interface DatabaseManager {
     String create(String command);
     ResultSet find(String tableName);
     String insert(String command);
-    String update(String command);
+    ResultSet update(String command);
     ResultSet delete(String command);
     void closeConnection();
 }

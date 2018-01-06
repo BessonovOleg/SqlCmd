@@ -18,11 +18,6 @@ public class CommandController {
     }
 
     private void initCommands(){
-        /*
-        insert
-        update
-        */
-
         commands.add(new Connect(databaseManager,view));
         commands.add(new Tables(databaseManager,view));
         commands.add(new Clear(databaseManager,view));
@@ -30,6 +25,8 @@ public class CommandController {
         commands.add(new Drop(databaseManager,view));
         commands.add(new Find(databaseManager,view));
         commands.add(new Delete(databaseManager,view));
+        commands.add(new Insert(databaseManager,view));
+        commands.add(new Update(databaseManager,view));
         commands.add(new Help(commands,view));
         commands.add(new Exit(databaseManager,view));
     }
