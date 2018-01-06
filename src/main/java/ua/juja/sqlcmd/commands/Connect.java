@@ -1,19 +1,15 @@
 package ua.juja.sqlcmd.commands;
 
 import ua.juja.sqlcmd.model.DatabaseManager;
+import ua.juja.sqlcmd.utils.CommandChecker;
+import ua.juja.sqlcmd.utils.CommandParser;
 import ua.juja.sqlcmd.views.View;
 
 public class Connect implements Command{
+
     private DatabaseManager databaseManager;
     private View view;
-    public final String COMMAND_TEXT = "connect";
-    private String helpText =  "сonnect\n" +
-            "Команда для подключения к соответствующей БД\n" +
-            "Формат команды: connect | database | username | password\n" +
-            "\t где: database - имя БД\n" +
-            "\t username -  имя пользователя БД\n" +
-            "\t password - пароль пользователя БД\n" +
-            "--------------------------------------------------";
+
 
     public Connect(DatabaseManager databaseManager, View view){
         this.databaseManager = databaseManager;
@@ -22,7 +18,8 @@ public class Connect implements Command{
 
     @Override
     public boolean canExecute(String command) {
-        return command.toLowerCase().startsWith(COMMAND_TEXT);
+        String COMMAND_TEXT = "connect";
+        return CommandChecker.check(command,COMMAND_TEXT);
     }
 
     @Override
@@ -32,7 +29,7 @@ public class Connect implements Command{
         String password = "";
 
         try {
-            String[] arrayCommand = command.split("[|]");
+            String[] arrayCommand = CommandParser.getArray(command);
             dbName   = arrayCommand[1];
             userName = arrayCommand[2];
             password = arrayCommand[3];
@@ -51,6 +48,13 @@ public class Connect implements Command{
 
     @Override
     public void printHelp() {
+        String helpText =  "сonnect\n" +
+                "Команда для подключения к соответствующей БД\n" +
+                "Формат команды: connect | database | username | password\n" +
+                "\t где: database - имя БД\n" +
+                "\t username -  имя пользователя БД\n" +
+                "\t password - пароль пользователя БД\n" +
+                "--------------------------------------------------";
         view.write(helpText);
     }
 }

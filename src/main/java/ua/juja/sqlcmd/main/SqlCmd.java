@@ -10,8 +10,10 @@ import ua.juja.sqlcmd.views.View;
 public class SqlCmd {
     public static void main(String[] args) {
         DatabaseManager databaseManager = new PostgresDatabaseManager("127.0.0.1:5432");
+
         View view = new ConsoleView();
         view.write("Привет пользователь, введи команду или Help для получения списка команд");
+
         CommandController commandController = new CommandController(databaseManager,view);
         commandController.run();
     }

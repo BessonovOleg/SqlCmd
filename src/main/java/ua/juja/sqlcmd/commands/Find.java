@@ -3,6 +3,7 @@ package ua.juja.sqlcmd.commands;
 import ua.juja.sqlcmd.model.DatabaseManager;
 import ua.juja.sqlcmd.model.RecordsTable;
 import ua.juja.sqlcmd.model.RecordsTableImpl;
+import ua.juja.sqlcmd.utils.CommandChecker;
 import ua.juja.sqlcmd.views.View;
 
 public class Find implements Command{
@@ -24,7 +25,7 @@ public class Find implements Command{
 
     @Override
     public boolean canExecute(String command) {
-        return command.toLowerCase().startsWith(COMMAND_TEXT);
+        return CommandChecker.check(command,COMMAND_TEXT);
     }
 
     @Override

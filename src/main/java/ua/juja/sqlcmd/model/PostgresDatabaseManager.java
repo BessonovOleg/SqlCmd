@@ -96,7 +96,6 @@ public class PostgresDatabaseManager implements DatabaseManager {
         return result.toString();
     }
 
-
     @Override
     public String create(String command) {
         if (isConnectionNull()) {
@@ -140,7 +139,6 @@ public class PostgresDatabaseManager implements DatabaseManager {
         return result.toString();
     }
 
-
     @Override
     public ResultSet find(String tableName) {
         if (isConnectionNull()) {
@@ -157,8 +155,6 @@ public class PostgresDatabaseManager implements DatabaseManager {
         }
         return rs;
     }
-
-
 
     @Override
     public String insert(String command) {
@@ -210,7 +206,6 @@ public class PostgresDatabaseManager implements DatabaseManager {
         }
         return result.toString();
     }
-
 
     @Override
     public String update(String command) {
@@ -287,7 +282,6 @@ public class PostgresDatabaseManager implements DatabaseManager {
         return result.toString();
     }
 
-
     @Override
     public ResultSet delete(String command) {
         if (isConnectionNull()) {
@@ -348,8 +342,6 @@ public class PostgresDatabaseManager implements DatabaseManager {
         return rs;
     }
 
-
-
     private boolean isConnectionNull(){
         if(connection == null){
             return true;
@@ -357,107 +349,6 @@ public class PostgresDatabaseManager implements DatabaseManager {
             return false;
         }
     }
-
-/*
-    public String printRecordSet(ResultSet rs) {
-        StringBuilder result = new StringBuilder();
-        StringBuilder separate = new StringBuilder();
-        int countColumns = 0;
-        int[] sizeColumn = null;
-        String[] columnHeaders = null;
-        ArrayList<String> rows = new ArrayList<>();
-
-        try {
-            ResultSetMetaData md = rs.getMetaData();
-            countColumns = md.getColumnCount();
-            sizeColumn = new int[countColumns];
-            columnHeaders = new String[countColumns];
-
-            for (int i = 1; i <= countColumns; i++) {
-                columnHeaders[i-1] = md.getColumnName(i);
-                sizeColumn[i-1] = md.getColumnName(i).length() + 2;
-            }
-
-            String tmpRow = "";
-
-            while (rs.next()) {
-                tmpRow = "";
-                for (int i = 1; i <= countColumns; i++) {
-                    if (rs.getObject(i) != null) {
-                        if (i > 1) {
-                            tmpRow = tmpRow + "|" + rs.getString(i);
-                        } else {
-                            tmpRow = tmpRow + rs.getString(i);
-                        }
-
-                        if ((rs.getString(i).length() + 2) > sizeColumn[i - 1]) {
-                            sizeColumn[i - 1] = rs.getString(i).length() + 2;
-                        }
-                    }else {
-                        if(i > 1){
-                            tmpRow = tmpRow + " | ";
-                        }else {
-                            tmpRow = " ";
-                        }
-                    }
-                }
-                rows.add(tmpRow);
-            }
-            rs.close();
-        }catch (SQLException ex){
-            result.append(ex.getMessage());
-        }
-
-        //формироуем заголовочнуя строку
-        separate.append("+");
-        for (int i = 0; i < sizeColumn.length; i++) {
-            for (int j = 0; j < sizeColumn[i]; j++) {
-                separate.append("-");
-            }
-            separate.append("+");
-        }
-        separate.append("\n");
-
-        result.append(separate.toString());
-
-        int index = 0;
-        for(String header:columnHeaders){
-            result.append("+ ");
-            result.append(header);
-
-            if((header.length()) < sizeColumn[index]){
-                for(int j = 0; j < (sizeColumn[index] - header.length()-1);j++){
-                    result.append(" ");
-                }
-            }
-            index++;
-        }
-
-        result.append("+");
-        result.append("\n");
-        result.append(separate.toString());
-
-        for(String data:rows){
-            String[] cols = data.split("[|]");
-
-            for(int colIndex = 0;colIndex < cols.length ;colIndex++){
-                result.append("+ ");
-                result.append(cols[colIndex]);
-
-                if(cols[colIndex].length() < sizeColumn[colIndex]){
-                    for(int j = 0; j < (sizeColumn[colIndex] - cols[colIndex].length()-1);j++){
-                        result.append(" ");
-                    }
-                }
-            }
-            result.append("+\n");
-        }
-        result.append(separate.toString());
-        return result.toString();
-    }
-*/
-
-
 
     @Override
     public void closeConnection(){

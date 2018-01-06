@@ -18,26 +18,18 @@ public class CommandController {
     }
 
     private void initCommands(){
-/*
-        *сonnect
-        *tables
-        *clear
-        *drop
-        create
-        *find
+        /*
         insert
         update
-        delete
-        *help
-        *exit
-        *
-  */
+        */
 
         commands.add(new Connect(databaseManager,view));
         commands.add(new Tables(databaseManager,view));
         commands.add(new Clear(databaseManager,view));
+        commands.add(new Create(databaseManager,view));
         commands.add(new Drop(databaseManager,view));
         commands.add(new Find(databaseManager,view));
+        commands.add(new Delete(databaseManager,view));
         commands.add(new Help(commands,view));
         commands.add(new Exit(databaseManager,view));
     }

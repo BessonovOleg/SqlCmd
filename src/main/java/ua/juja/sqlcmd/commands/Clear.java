@@ -1,17 +1,14 @@
 package ua.juja.sqlcmd.commands;
 
 import ua.juja.sqlcmd.model.DatabaseManager;
+import ua.juja.sqlcmd.utils.CommandChecker;
+import ua.juja.sqlcmd.utils.CommandParser;
 import ua.juja.sqlcmd.views.View;
 
 public class Clear implements Command{
+
     private DatabaseManager databaseManager;
     private View view;
-    public final String COMMAND_TEXT = "clear";
-    private String helpText = "Clear\n"+
-             "Команда очищает содержимое указанной (всей) таблицы\n"+
-             "Формат: Clear | tableName\n"+
-             "где tableName - имя очищаемой таблицы\n"+
-             "--------------------------------------------------";
 
     public Clear(DatabaseManager databaseManager, View view) {
         this.databaseManager = databaseManager;
@@ -20,7 +17,8 @@ public class Clear implements Command{
 
     @Override
     public boolean canExecute(String command) {
-        return command.toLowerCase().startsWith(COMMAND_TEXT);
+        String COMMAND_TEXT = "clear";
+        return CommandChecker.check(command,COMMAND_TEXT);
     }
 
     @Override
@@ -28,7 +26,7 @@ public class Clear implements Command{
         String tableName = "";
 
         try {
-            String[] arrayCommand = command.split("[|]");
+            String[] arrayCommand = CommandParser.getArray(command);
             tableName = arrayCommand[1];
         }catch (Exception ex){
             view.write("Ошибка формата команды");
@@ -39,6 +37,11 @@ public class Clear implements Command{
 
     @Override
     public void printHelp() {
+        String helpText = "Clear\n"+
+                "Команда очищает содержимое указанной (всей) таблицы\n"+
+                "Формат: Clear | tableName\n"+
+                "где tableName - имя очищаемой таблицы\n"+
+                "--------------------------------------------------";
         view.write(helpText);
     }
 }
